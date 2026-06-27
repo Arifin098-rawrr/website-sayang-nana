@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tempat kumpul foto orang cantik </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="css/gallery.css">
+</head>
+<body>
+
+    <!-- ✅ AUDIO MUSIK — lanjut otomatis dari index.html -->
+    <audio id="bg-music" src="assets/music/music.mp3" loop></audio>
+
+    <!-- ✅ TOMBOL MUSIK FLOATING -->
+    <button id="music-toggle" class="music-btn">
+        <i class="fas fa-compact-disc fa-spin"></i>
+    </button>
+
+    <canvas id="love-canvas"></canvas>
+
+    <main class="main-interface">
+        
+        <header class="gallery-header">
+            <div class="title-deco">
+                <span class="deco-heart">&#10084;</span>
+                <h1 class="gallery-title">Selamat datang </h1>
+                <span class="deco-heart">&#10084;</span>
+            </div>
+            <p class="gallery-subtitle">Nana Sabila Anak mamah Adas</p>
+            <p class="gallery-subtitle">Orang Tercantik</p>
+        </header>
+
+        <div id="hidden-masonry-data" style="display: none;">
+            <div class="masonry-item" data-index="0" data-caption="Aku nggak butuh Google buat cari yang terbaik, karena aku udah nemuin kamu. njay"></div>
+            <div class="masonry-item" data-index="1" data-caption="Cantikmu itu bukan cuma dari wajah, tapi dari cara kamu bikin hari orang lain jadi lebih hangat ea"></div>
+            <div class="masonry-item" data-index="2" data-caption="Kalau cantik itu dosa, kayaknya kamu udah masuk daftar buronan,iya 2 "></div>
+            <div class="masonry-item" data-index="3" data-caption="Kalau dunia terlalu berisik, aku cuma butuh satu hal buat tenang: suara kamu. eaea"></div>
+            <div class="masonry-item" data-index="4" data-caption="Kamu tahu kenapa aku suka malam? Karena di saat sepi pun, kamu tetap ramai di pikiranku.meledak"></div>
+            <div class="masonry-item" data-index="5" data-caption="Kalau rindu punya alamat, mungkin tujuannya selalu kamu"></div>
+        </div>
+
+        <section class="message-form-container">
+            <div class="form-header">
+                <i class="fas fa-envelope-open-text form-icon"></i>
+                <h2>Kirim Pesan dong nana sabila , untuk acu </h2>
+                <p>Tinggalkan pesan manis atau kesan caramu memandang momen kita. ga Kirim pesan mayah</p>
+            </div>
+            <form id="memory-form">
+                <div class="input-group">
+                    <label for="sender-name">Nama Pengirim</label>
+                    <input type="text" id="sender-name" placeholder="Siapa namamu? " required>
+                </div>
+                <div class="input-group">
+                    <label for="sender-message">Pesan terbagus untuk acu Nana</label>
+                    <textarea id="sender-message" rows="4" placeholder="Tuliskan pesan serumu di sini..." required></textarea>
+                </div>
+                <button type="submit" class="btn-submit">
+                    <span>Kirim Pesan</span> <i class="fas fa-paper-plane"></i>
+                </button>
+            </form>
+        </section>
+    </main>
+
+    <div id="premium-lightbox" class="lightbox-modal hidden">
+        <button class="lightbox-close"><i class="fas fa-times"></i></button>
+
+        <div class="swiper lightbox-swiper">
+            <div class="swiper-wrapper" id="lightbox-swiper-wrapper"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+
+        <div class="lightbox-info-panel">
+            <div class="lightbox-heart-icon">&#10084;</div>
+            <h2 id="lightbox-title">Judul Foto</h2>
+            <div class="lightbox-sub-meta">
+                <span id="lightbox-date"><i class="far fa-calendar-alt"></i> Tanggal</span>
+                <span id="lightbox-location"><i class="fas fa-map-marker-alt"></i> Lokasi</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <!-- ✅ Music.js dipanggil paling awal agar langsung lanjut dari index -->
+    <script src="js/music.js"></script>
+    <script src="js/love-particles.js"></script>
+    <script src="js/gallery.js"></script>
+</body>
+</html>

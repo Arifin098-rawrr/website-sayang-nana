@@ -1,0 +1,300 @@
+/* ==============================
+   ROOT & BASE RESET
+============================== */
+:root {
+    --pink-1: #ff6b9d;
+    --pink-2: #c44569;
+    --pink-3: #fbc2eb;
+    --rose: #f5576c;
+    --petal: #ffd1dc;
+    --bg-dark: #0a0008;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-dark);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+    color: #fff;
+}
+
+/* ==============================
+   CANVAS BACKGROUND FULLSCREEN
+============================== */
+#love-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+    cursor: pointer;
+}
+
+/* INTERFACE CONTAINER */
+.main-interface {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 4rem 1.5rem;
+    pointer-events: none; /* Klik bisa tembus ke canvas di bawahnya */
+}
+
+/* ==============================
+   HEADER (ATAS TENGAH)
+============================== */
+.gallery-header {
+    text-align: center;
+    margin-bottom: 25vh; /* Ruang kosong tengah untuk tempat berterbangan */
+    pointer-events: auto;
+}
+
+.title-deco {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 12px;
+}
+
+.deco-heart {
+    font-size: 1.6rem;
+    color: var(--pink-1);
+    animation: heartbeat 1.4s ease-in-out infinite;
+    display: inline-block;
+}
+
+.deco-heart:last-child { animation-delay: 0.7s; }
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    14%       { transform: scale(1.3); }
+    28%       { transform: scale(1); }
+    42%       { transform: scale(1.2); }
+    70%       { transform: scale(1); }
+}
+
+.gallery-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    background: linear-gradient(135deg, #ff6b9d, #c44569, #f5576c);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.gallery-subtitle {
+    color: #b3a2a9;
+    font-size: 1.1rem;
+    font-style: italic;
+}
+
+/* ==============================
+   FORM PENGIRIM PESAN (BAWAH)
+============================== */
+.message-form-container {
+    background: rgba(26, 10, 16, 0.55);
+    border: 1px solid rgba(255, 107, 157, 0.2);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    width: 100%;
+    max-width: 580px;
+    margin-top: 25vh; /* Menggeser form ke bawah area terbang */
+    padding: 2.5rem;
+    border-radius: 30px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+    pointer-events: auto;
+}
+
+.form-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.form-icon {
+    font-size: 2.3rem;
+    color: var(--pink-1);
+    margin-bottom: 10px;
+}
+
+.form-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    margin-bottom: 6px;
+}
+
+.form-header p {
+    color: #b3a2a9;
+    font-size: 0.95rem;
+}
+
+.input-group {
+    margin-bottom: 1.5rem;
+}
+
+.input-group label {
+    display: block;
+    color: var(--petal);
+    font-size: 0.88rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.input-group input,
+.input-group textarea {
+    width: 100%;
+    padding: 14px 18px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 107, 157, 0.15);
+    border-radius: 14px;
+    color: #fff;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+.input-group input:focus,
+.input-group textarea:focus {
+    outline: none;
+    border-color: var(--pink-1);
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 12px rgba(255, 107, 157, 0.2);
+}
+
+.btn-submit {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, #ff6b9d, #c44569);
+    border: none;
+    border-radius: 14px;
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+}
+
+.btn-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(255, 107, 157, 0.4);
+}
+
+/* ==============================
+   LIGHTBOX MODAL
+============================== */
+.lightbox-modal {
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(ellipse at center, #1a0010 0%, #0a0008 100%);
+    backdrop-filter: blur(15px);
+    z-index: 2000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+    transition: opacity 0.4s ease;
+}
+
+.lightbox-modal.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 28px;
+    right: 28px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,107,157,0.3);
+    color: #fff;
+    font-size: 1.4rem;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+}
+
+.lightbox-close:hover {
+    transform: rotate(90deg);
+    color: var(--pink-1);
+}
+
+.lightbox-swiper {
+    width: 100%;
+    height: 65vh;
+}
+
+.swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.swiper-slide img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 15px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    color: var(--pink-1) !important;
+}
+
+.lightbox-info-panel {
+    background: rgba(255, 107, 157, 0.05);
+    border: 1px solid rgba(255, 107, 157, 0.2);
+    backdrop-filter: blur(20px);
+    padding: 18px 40px;
+    border-radius: 24px;
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+#lightbox-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    margin-bottom: 6px;
+    background: linear-gradient(135deg, #ff6b9d, #fbc2eb);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.lightbox-sub-meta {
+    font-size: 0.88rem;
+    color: #b3a2a9;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.lightbox-sub-meta i { color: var(--pink-1); }
+
+@media (max-width: 768px) {
+    .gallery-title { font-size: 2.3rem; }
+    .message-form-container { padding: 1.8rem; }
+}
